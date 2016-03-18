@@ -10,8 +10,8 @@
  * 
  * @version 1.0
  * @author  Jackie Pang
- * @e-mail: 15pengyi@gmail.com
- * @date    2012/10/11
+ * @e-mail: liangyi19941213@gmail.com
+ * @date    2014/10/11
  */
 
 #include <iostream>
@@ -21,40 +21,40 @@
 #include<iomanip>
 using namespace std;
 
-struct HNode // ´æ´¢½áµã
+struct HNode // å­˜å‚¨ç»“ç‚¹
 {
-	int verdata; // ½áµã±àºÅ
-	int in; // Èë¶È
+	int verdata; // ç»“ç‚¹ç¼–å·
+	int in; // å…¥åº¦
 	struct Node *link;
 };
 
-struct Node // ´æ´¢±ßÈ¨
+struct Node // å­˜å‚¨è¾¹æƒ
 {
-	int adjdata; // ½áµã±àºÅ
-	int weight; // È¨Öµ
+	int adjdata; // ç»“ç‚¹ç¼–å·
+	int weight; // æƒå€¼
 	struct Node *next;
 };
 
-struct Info // ½«ÌâÄ¿ÖĞµÄÊäÈëĞÎÊ½×ª»¯ÎªÆğµã¡¢ÖÕµã¡¢È¨ÖµµÄÊäÈëĞÎÊ½
+struct Info // å°†é¢˜ç›®ä¸­çš„è¾“å…¥å½¢å¼è½¬åŒ–ä¸ºèµ·ç‚¹ã€ç»ˆç‚¹ã€æƒå€¼çš„è¾“å…¥å½¢å¼
 {
-	int num; // ½áµã±àºÅ
-	int dut; // Æğµãµ½ÖÕµãµÄÈ¨Öµ
-	int pre[500]; // ´Ë½áµãµÄÇ°Çı½áµã
-	int prenum; // Ç°Çı½áµãÊıÁ¿
+	int num; // ç»“ç‚¹ç¼–å·
+	int dut; // èµ·ç‚¹åˆ°ç»ˆç‚¹çš„æƒå€¼
+	int pre[500]; // æ­¤ç»“ç‚¹çš„å‰é©±ç»“ç‚¹
+	int prenum; // å‰é©±ç»“ç‚¹æ•°é‡
 };
 
-struct Input // ÒÔÆğµã¡¢ÖÕµã¡¢È¨ÖµµÄĞÎÊ½´æ´¢
+struct Input // ä»¥èµ·ç‚¹ã€ç»ˆç‚¹ã€æƒå€¼çš„å½¢å¼å­˜å‚¨
 {
-	int head; // Æğµã
-	int tail; // ÖÕµã
-	int len; // È¨Öµ
+	int head; // èµ·ç‚¹
+	int tail; // ç»ˆç‚¹
+	int len; // æƒå€¼
 };
 
-void CreateGraph(std::istream &inputStream, HNode *&Adjlist, int n) // ½¨Á¢Í¼
+void CreateGraph(std::istream &inputStream, HNode *&Adjlist, int n) // å»ºç«‹å›¾
 {
 	int temp = 0, first = 0, time = 0, flag = 0;
-	int *judge = new int[n]; // ÅĞ¶Ï½áµãÊÇ·ñÎªÎ²½áµã
-	for (int i=0; i<n; i++) // ³õÊ¼»¯
+	int *judge = new int[n]; // åˆ¤æ–­ç»“ç‚¹æ˜¯å¦ä¸ºå°¾ç»“ç‚¹
+	for (int i=0; i<n; i++) // åˆå§‹åŒ–
 		judge[i] = i;
 	char ch;
 	struct Info *q = new struct Info[n];
@@ -68,7 +68,7 @@ void CreateGraph(std::istream &inputStream, HNode *&Adjlist, int n) // ½¨Á¢Í¼
 		{
 			q[i].prenum = 0;
 			inputStream >> q[i].pre[q[i].prenum];
-			for (int k=0; k<n; k++) // ²»ÊÇÎ²½áµãÔò½«ÆäÖµ¸³Îª-1
+			for (int k=0; k<n; k++) // ä¸æ˜¯å°¾ç»“ç‚¹åˆ™å°†å…¶å€¼èµ‹ä¸º-1
 			{
 				if(k == q[i].pre[q[i].prenum])
 					judge[k] = -1;
@@ -88,7 +88,7 @@ void CreateGraph(std::istream &inputStream, HNode *&Adjlist, int n) // ½¨Á¢Í¼
 			}
 		}
 	}
-	// ¼Ù¶¨µÚiĞĞÊäÈëÎª¹¤Ğòi-1
+	// å‡å®šç¬¬iè¡Œè¾“å…¥ä¸ºå·¥åºi-1
 	struct Input k[1000];
 	struct Input kk;
 	for (int i=0; i<n; i++)
@@ -132,7 +132,7 @@ void CreateGraph(std::istream &inputStream, HNode *&Adjlist, int n) // ½¨Á¢Í¼
 			}
 		}
 	}
-	/*²âÊÔ½á¹¹ÌåInputÊÇ·ñ×ª»¯³É¹¦
+	/*æµ‹è¯•ç»“æ„ä½“Inputæ˜¯å¦è½¬åŒ–æˆåŠŸ
 	for (int m=0; m<time; m++)
 		cout << k[m].head << " " << k[m].tail << " " << k[m].len << endl;
 	//*/
@@ -145,13 +145,13 @@ void CreateGraph(std::istream &inputStream, HNode *&Adjlist, int n) // ½¨Á¢Í¼
 	}
 	for (int j=0; j<time; j++)
 	{
-		p = new struct Node; // Éú³ÉĞÂµÄ±ß±í½áµã
+		p = new struct Node; // ç”Ÿæˆæ–°çš„è¾¹è¡¨ç»“ç‚¹
 		p->adjdata = k[j].tail;
 		p->weight = k[j].len;
 		p->next = Adjlist[k[j].head].link;
 		Adjlist[k[j].head].link = p;
 	}
-	for (int l=0; l<=n; l++) // ¼ÆËãÈë¶È
+	for (int l=0; l<=n; l++) // è®¡ç®—å…¥åº¦
 	{
 		p = Adjlist[l].link;
 		while (p != NULL)
@@ -161,7 +161,7 @@ void CreateGraph(std::istream &inputStream, HNode *&Adjlist, int n) // ½¨Á¢Í¼
 			p = p->next;
 		}
 	}
-	/*½áµãÈë¶È²âÊÔ
+	/*ç»“ç‚¹å…¥åº¦æµ‹è¯•
 	for (int i=1; i<=n; i++)
 		cout << Adjlist[i].in << " ";
 	*/
@@ -172,7 +172,7 @@ void PrintPath(std::ostream &outputStream, HNode *Adjlist, int *ve, int *vl, int
 	int i = 0, temp = 0;
 	Node *p = NULL;
 	temp = path[head-1];
-	if (temp == tail) // °´ÒªÇóÊä³ö
+	if (temp == tail) // æŒ‰è¦æ±‚è¾“å‡º
 	{
 		outputStream << "[" << path[0];
 		while (path[i] != tail)
@@ -186,18 +186,18 @@ void PrintPath(std::ostream &outputStream, HNode *Adjlist, int *ve, int *vl, int
 	{
 		if (ve[p->adjdata] == vl[p->adjdata])
 		{
-			path[head] = p->adjdata; // p->adjdataÈëÕ»
+			path[head] = p->adjdata; // p->adjdataå…¥æ ˆ
 			head++;
-			PrintPath(outputStream, Adjlist, ve, vl, path, head, tail); // ÉîËÑÂ·¾¶
-			head--; // ³öÕ»
+			PrintPath(outputStream, Adjlist, ve, vl, path, head, tail); // æ·±æœè·¯å¾„
+			head--; // å‡ºæ ˆ
 		}
 	}
 }
 
-void CriticalPath(std::ostream &outputStream, HNode *Adjlist, int n) // ÕÒµ½¹Ø¼üÂ·¾¶
+void CriticalPath(std::ostream &outputStream, HNode *Adjlist, int n) // æ‰¾åˆ°å…³é”®è·¯å¾„
 {
 	n++;
-	int front = 0, rear = 0, flag = 0; // frontºÍrearÓÃÓÚÕ»²Ù×÷£¬flagÅĞ¶ÏÊÇ·ñÓĞ»ØÂ·
+	int front = 0, rear = 0, flag = 0; // frontå’Œrearç”¨äºæ ˆæ“ä½œï¼Œflagåˆ¤æ–­æ˜¯å¦æœ‰å›è·¯
 	int j, k, l;
 	int *ve = new int[n];
 	int *vl = new int[n];
@@ -207,25 +207,25 @@ void CriticalPath(std::ostream &outputStream, HNode *Adjlist, int n) // ÕÒµ½¹Ø¼ü
 	{
 		ve[i] = 0;
 		vl[i] = 0;
-		if (Adjlist[i].in == 0) // Ñ°ÕÒÈë¶ÈÎª0µÄ½áµãÈëÕ»
+		if (Adjlist[i].in == 0) // å¯»æ‰¾å…¥åº¦ä¸º0çš„ç»“ç‚¹å…¥æ ˆ
 		{
 			stack[rear] = i;
 			rear++;
 		}
 	}
-	while (front != rear) // Õ»²Ù×÷¿ªÊ¼
+	while (front != rear) // æ ˆæ“ä½œå¼€å§‹
 	{
 		j = stack[front];
 		front++;
 		flag++;
-		p = Adjlist[j].link; // pÖ¸ÏòµÚÒ»¸öÁÚ½Ó½áµã
+		p = Adjlist[j].link; // pæŒ‡å‘ç¬¬ä¸€ä¸ªé‚»æ¥ç»“ç‚¹
 		while (p != NULL)
 		{
 			k = p->adjdata;
-			Adjlist[k].in--; // Èë¶È¼õ1
+			Adjlist[k].in--; // å…¥åº¦å‡1
 			if(ve[j]+p->weight > ve[k])
-				ve[k] = ve[j] + p->weight; // ×î³¤Â·¾¶¸üĞÂ
-			if (Adjlist[k].in == 0) // Èë¶ÈÎª0ÔòÈëÕ»
+				ve[k] = ve[j] + p->weight; // æœ€é•¿è·¯å¾„æ›´æ–°
+			if (Adjlist[k].in == 0) // å…¥åº¦ä¸º0åˆ™å…¥æ ˆ
 			{
 				stack[rear] = k;
 				rear++;
@@ -235,7 +235,7 @@ void CriticalPath(std::ostream &outputStream, HNode *Adjlist, int n) // ÕÒµ½¹Ø¼ü
 	}
 	if(flag < n)
 	{
-		outputStream << "Error£¡ÓĞ»ØÂ·,ÇëÖØĞÂÊäÈëÊı¾İ" << endl;
+		outputStream << "Errorï¼æœ‰å›è·¯,è¯·é‡æ–°è¾“å…¥æ•°æ®" << endl;
 		return;
 	}
 	for (int i=0; i<n; i++)
@@ -243,18 +243,18 @@ void CriticalPath(std::ostream &outputStream, HNode *Adjlist, int n) // ÕÒµ½¹Ø¼ü
 	for (int i=n-2; i>=0; i--)
 	{
 		j = stack[i];
-		p = Adjlist[j].link; // pÖ¸ÏòÏÂÒ»ÁÚ½Ó½Úµã
+		p = Adjlist[j].link; // pæŒ‡å‘ä¸‹ä¸€é‚»æ¥èŠ‚ç‚¹
 		while (p != NULL)
 		{
 			k = p->adjdata;
-			if(vl[k]-p->weight < vl[j]) // ×î¶ÌÂ·³¤¶È¸üĞÂ
+			if(vl[k]-p->weight < vl[j]) // æœ€çŸ­è·¯é•¿åº¦æ›´æ–°
 				vl[j] = vl[k] - p->weight;
 			p = p->next;
 		}
 	}
-	int *record = new int[n]; // record´æ´¢¹Ø¼üÂ·¾¶½áµã
-	int *delay = new int[n]; // delay´æ´¢¿ÉÍÏÑÓÊ±¼ä
-	int *path = new int[n]; // pathÓÃÓÚ¹Ø¼üÂ·¾¶µÄÊä³ö
+	int *record = new int[n]; // recordå­˜å‚¨å…³é”®è·¯å¾„ç»“ç‚¹
+	int *delay = new int[n]; // delayå­˜å‚¨å¯æ‹–å»¶æ—¶é—´
+	int *path = new int[n]; // pathç”¨äºå…³é”®è·¯å¾„çš„è¾“å‡º
 	int m = 0, t = 0;
 	outputStream << ve[n-1] << endl;
 	for (int i=0; i<n; i++)
@@ -266,7 +266,7 @@ void CriticalPath(std::ostream &outputStream, HNode *Adjlist, int n) // ÕÒµ½¹Ø¼ü
 			m++;
 		}
 	}
-	m = m - 2; // È¥³ı×îºóÒ»¸öÁÙÊ±½áµã
+	m = m - 2; // å»é™¤æœ€åä¸€ä¸ªä¸´æ—¶ç»“ç‚¹
 	path[0] = record[0];
 	PrintPath(outputStream, Adjlist, ve, vl, path, 1, record[m]);
 	for (int i=0; i<n-1; i++)
@@ -276,7 +276,7 @@ void CriticalPath(std::ostream &outputStream, HNode *Adjlist, int n) // ÕÒµ½¹Ø¼ü
 void USSolver::Solve(std::istream &inputStream, std::ostream &outputStream)
 {
 	outputStream << "Your Answer:" << endl;
-	int n; // nÎª½áµãÊıÁ¿
+	int n; // nä¸ºç»“ç‚¹æ•°é‡
 	inputStream >> n;
 	struct HNode *Adjlist = new struct HNode[n+1];
 	CreateGraph(inputStream, Adjlist, n);
@@ -285,7 +285,7 @@ void USSolver::Solve(std::istream &inputStream, std::ostream &outputStream)
 
 int main(int argc, char *argv[])
 {
-	//¿ÉÔÚ´Ë¸ü¸Ä²âÊÔÎÄ¼ş
+	//å¯åœ¨æ­¤æ›´æ”¹æµ‹è¯•æ–‡ä»¶
     std::string fileName = "test101.txt"; 
     USSolver unofficialSolver(fileName);
     const std::string unofficialAnswer = unofficialSolver.GetAnswer();
