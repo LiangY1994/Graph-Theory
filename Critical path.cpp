@@ -9,7 +9,7 @@
  * This file declares ...
  * 
  * @version 1.0
- * @author  Jackie Pang
+ * @author  Liang Yi
  * @e-mail: liangyi19941213@gmail.com
  * @date    2014/10/11
  */
