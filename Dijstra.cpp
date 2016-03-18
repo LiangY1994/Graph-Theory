@@ -9,9 +9,9 @@
  * This file declares ...
  * 
  * @version 1.0
- * @author  Jackie Pang
- * @e-mail: 15pengyi@gmail.com
- * @date    2012/10/11
+ * @author  Liang Yi	
+ * @e-mail: liangyi19941213@gmail.com
+ * @date    2014/10/15
  */
 
 #include <iostream>
@@ -25,11 +25,11 @@
 #include<iomanip>
 using namespace std;
 
-#define maxint 99999999 // ÉèÖÃ²»ÁÚ½Ó½áµã¼ä¾à
-void Dijkstra(std::ostream &outputStream, int **Weightmatrix, int *&prenode, int *&distance, int head, int v) // ÊµÏÖDijkstraËã·¨
+#define maxint 99999999 // è®¾ç½®ä¸é‚»æ¥ç»“ç‚¹é—´è·
+void Dijkstra(std::ostream &outputStream, int **Weightmatrix, int *&prenode, int *&distance, int head, int v)
 {
-	bool *visited = new bool[v]; // ¼ÇÂ¼½áµãiÊÇ·ñ±»·ÃÎÊ¹ı
-	for (int i=0; i<v; i++) // ³õÊ¼»¯
+	bool *visited = new bool[v]; // è®°å½•ç»“ç‚¹iæ˜¯å¦è¢«è®¿é—®è¿‡
+	for (int i=0; i<v; i++) // åˆå§‹åŒ–
 	{
 		distance[i] = Weightmatrix[head][i];
 		visited[i] = false;
@@ -86,29 +86,28 @@ void PrintPath(std::ostream &outputStream, int *prenode, int *distance, int head
 
 void USSolver::Solve(std::istream &inputStream, std::ostream &outputStream)
 {
-	//ÇëÔÚ´ËÌî³ä´úÂë
-	int v, e; // v´ú±í¶¨µã¸öÊı£¬e´ú±í±ß¸öÊı
+	int v, e; // vä»£è¡¨å®šç‚¹ä¸ªæ•°ï¼Œeä»£è¡¨è¾¹ä¸ªæ•°
 	inputStream >> v;
 	inputStream >> e;
-	int *line1 = new int[v+1]; // ÕıÏò±íµÚÒ»ĞĞ
+	int *line1 = new int[v+1]; // æ­£å‘è¡¨ç¬¬ä¸€è¡Œ
 	for (int i=0; i<(v+1); i++)
 		inputStream >> line1[i];
-	int *line2 = new int[e]; // ÕıÏò±íµÚ¶şĞĞ
+	int *line2 = new int[e]; // æ­£å‘è¡¨ç¬¬äºŒè¡Œ
 	for (int i=0; i<e; i++)
 		inputStream >> line2[i];
 	int *r = new int[e];
-	for (int i=0; i<e; i++) // ÊäÈëÈ¨ÖØr[i]
+	for (int i=0; i<e; i++) // è¾“å…¥æƒé‡r[i]
 		inputStream >> r[i];
-	int **Adjacencymatrix = new int *[v]; // v*vµÄÁÚ½Ó¾ØÕóAdjacencymatrix
-	int **Pathmatrix = new int *[v]; // v*vµÄµÀÂ·¾ØÕóPathmatrix
-	int **Weightmatrix = new int *[v]; // v*vµÄÈ¨Öµ¾ØÕóWeightmatrix
+	int **Adjacencymatrix = new int *[v]; // v*vçš„é‚»æ¥çŸ©é˜µAdjacencymatrix
+	int **Pathmatrix = new int *[v]; // v*vçš„é“è·¯çŸ©é˜µPathmatrix
+	int **Weightmatrix = new int *[v]; // v*vçš„æƒå€¼çŸ©é˜µWeightmatrix
 	for (int i=0; i<v; i++)
 	{
 	   Adjacencymatrix[i] = new int[v];
 	   Pathmatrix[i] = new int[v];
 	   Weightmatrix[i] = new int[v];
 	}
-	for	(int i=0; i<v; i++) // ¾ØÕó³õÊ¼»¯
+	for	(int i=0; i<v; i++) // çŸ©é˜µåˆå§‹åŒ–
 	{
 		for (int j=0; j<v; j++)
 		{
@@ -130,13 +129,13 @@ void USSolver::Solve(std::istream &inputStream, std::ostream &outputStream)
 			g++;
 		}
 	}
-	/*for (int i=0; i<v; i++) // ÑéÖ¤¾ØÕóÖµµÄÕıÈ·ĞÔ
+	/*for (int i=0; i<v; i++) // éªŒè¯çŸ©é˜µå€¼çš„æ­£ç¡®æ€§
 	{
 		for (int j=0; j<v; j++)
 			cout << Weightmatrix[i][j] << " ";
 		cout << endl;
 	}*/
-	for (int i0=0; i0<v; i0++) // WarshallËã·¨ÊµÏÖÁÚ½Ó¾ØÕó×ªµÀÂ·¾ØÕó£¬ÅĞ¶ÏÁ½µãÖ®¼äÊÇ·ñÓĞÍ¨Â·
+	for (int i0=0; i0<v; i0++) // Warshallç®—æ³•å®ç°é‚»æ¥çŸ©é˜µè½¬é“è·¯çŸ©é˜µï¼Œåˆ¤æ–­ä¸¤ç‚¹ä¹‹é—´æ˜¯å¦æœ‰é€šè·¯
 	{
 		for (int j0=0; j0<v; j0++)
 		{
@@ -149,16 +148,16 @@ void USSolver::Solve(std::istream &inputStream, std::ostream &outputStream)
 			}
 		}
 	}
-	int n, head, tail; // nÎª²âÊÔµãÊıÁ¿£¬headÎª²âÊÔÊ×½áµã£¬tail
-	int *prenode = new int[v]; // ÓÃÓÚ¼ÇÂ¼Â·¾¶
-	int *distance = new int[v]; // distance[i]ÓÃÓÚ´æ´¢½áµãheadµ½iµÄ×î¶ÌÂ·³¤¶È
+	int n, head, tail; // nä¸ºæµ‹è¯•ç‚¹æ•°é‡ï¼Œheadä¸ºæµ‹è¯•é¦–ç»“ç‚¹ï¼Œtail
+	int *prenode = new int[v]; // ç”¨äºè®°å½•è·¯å¾„
+	int *distance = new int[v]; // distance[i]ç”¨äºå­˜å‚¨ç»“ç‚¹headåˆ°içš„æœ€çŸ­è·¯é•¿åº¦
 	inputStream >> n;
 	for (int I=0; I<n; I++)
 	{
 		inputStream >> head >> tail;
-		if(head == tail || Pathmatrix[head][tail] == 0) // Á½µãÖ®¼äÎŞÍ¨Â·ÔòÊä³öNO PATH
+		if(head == tail || Pathmatrix[head][tail] == 0) // ä¸¤ç‚¹ä¹‹é—´æ— é€šè·¯åˆ™è¾“å‡ºNO PATH
 			outputStream << "NO PATH" << endl;
-		else // Á½µãÖ®¼äÓĞÍ¨Â·ÔòÊµÏÖDËã·¨
+		else // ä¸¤ç‚¹ä¹‹é—´æœ‰é€šè·¯åˆ™å®ç°Dç®—æ³•
 		{
 			Dijkstra(outputStream, Weightmatrix, prenode, distance, head, v);
 			PrintPath(outputStream, prenode, distance, head, tail, v);
@@ -170,7 +169,6 @@ void USSolver::Solve(std::istream &inputStream, std::ostream &outputStream)
 
 int main(int argc, char *argv[])
 {
-	//¿ÉÔÚ´Ë¸ü¸Ä²âÊÔÎÄ¼ş
     std::string fileName = "test101.txt"; 
     
     USSolver unofficialSolver(fileName);
